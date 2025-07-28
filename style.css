@@ -1,0 +1,139 @@
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  margin-top: 50px;
+  background: #f4f4f4;
+}
+
+#game {
+  display: grid;
+  grid-template-columns: repeat(3, 100px);
+  gap: 5px;
+  justify-content: center;
+  margin: 20px auto;
+}
+
+.cell {
+  width: 100px;
+  height: 100px;
+  background: white;
+  border: 2px solid #333;
+  font-size: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+}
+
+#status {
+  font-size: 20px;
+  margin-top: 10px;
+}
+
+#restart {
+  margin-top: 15px;
+  padding: 10px 20px;
+  font-size: 16px;
+}
+
+#scoreboard {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  font-size: 18px;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+.buttons button {
+  padding: 8px 16px;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  background-color: #ddd;
+  border-radius: 5px;
+  transition: background 0.2s ease;
+}
+
+.buttons button:hover {
+  background-color: #ccc;
+}
+
+/* Arrow-style back button */
+#back {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background-color: #eee;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  transition: transform 0.2s ease;
+}
+
+#back:hover {
+  transform: translateX(-3px);
+}
+
+/* Win Line Effects */
+.board-container {
+  position: relative;
+  display: inline-block;
+}
+
+#win-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+#win-line::before {
+  content: '';
+  position: absolute;
+  background-color: black;
+  height: 5px;
+  transform-origin: center;
+  transform: scaleX(0);
+  transition: transform 0.4s ease;
+}
+
+/* Optional: you can add custom classes to animate in JS depending on the win direction */
+.win-horizontal::before {
+  top: 50%;
+  left: 0;
+  width: 100%;
+  transform: scaleX(1);
+}
+
+.win-vertical::before {
+  top: 0;
+  left: 50%;
+  width: 5px;
+  height: 100%;
+  transform: scaleY(1);
+}
+
+.win-diagonal-right::before {
+  top: 50%;
+  left: 50%;
+  width: 141%;
+  transform: translate(-50%, -50%) rotate(45deg) scaleX(1);
+}
+
+.win-diagonal-left::before {
+  top: 50%;
+  left: 50%;
+  width: 141%;
+  transform: translate(-50%, -50%) rotate(-45deg) scaleX(1);
+}
