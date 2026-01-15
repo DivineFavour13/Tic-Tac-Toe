@@ -2,48 +2,78 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Tic Tac Toe</title>
-  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tic Tac Toe - Ultimate Edition</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <h1>Tic Tac Toe</h1>
+  <h1>🎮 Tic Tac Toe</h1>
 
   <section id="mode-selection">
     <p>Select Game Mode:</p>
-    <button id="vs-player">Two Players</button>
-    <button id="vs-cpu">Play vs CPU</button>
+    <button id="vs-player">👥 Two Players</button>
+    <button id="vs-cpu">🤖 Play vs CPU</button>
+    
+    <div class="difficulty-section">
+      <label for="difficulty">CPU Difficulty:</label>
+      <select id="difficulty">
+        <option value="easy">😊 Easy (Smart & Mistakes)</option>
+        <option value="medium">😐 Medium (Perfect Play)</option>
+        <option value="hard" selected>🧠 Hard (Adaptive AI - Learns You!)</option>
+      </select>
+      <div id="ai-stats" style="margin-top: 15px; font-size: 0.9rem; opacity: 0.9;">
+        <div>Games AI Learned From: <span id="games-learned">0</span></div>
+        <div>Your Pattern Detected: <span id="pattern-detected">Unknown</span></div>
+      </div>
+    </div>
   </section>
 
-  <!-- Game Section -->
-<section id="game-section" style="display: none; position: relative;">
-    <button id="back" title="Back to Menu">&#8592;</button>
+  <section id="game-section" style="display: none;">
+    <button id="back" title="Back to Menu">←</button>
 
     <div id="scoreboard">
-        <span>Player X: <span id="score-x">0</span></span>
-        <span>Player O: <span id="score-o">0</span></span>
+      <div class="score-item">
+        <div class="score-label">Player X</div>
+        <div class="score-value" id="score-x">0</div>
+      </div>
+      <div class="score-item">
+        <div class="score-label">Player O</div>
+        <div class="score-value" id="score-o">0</div>
+      </div>
     </div>
 
     <div class="board-container">
-        <div id="game">
-            <div class="cell" data-index="0"></div>
-            <div class="cell" data-index="1"></div>
-            <div class="cell" data-index="2"></div>
-            <div class="cell" data-index="3"></div>
-            <div class="cell" data-index="4"></div>
-            <div class="cell" data-index="5"></div>
-            <div class="cell" data-index="6"></div>
-            <div class="cell" data-index="7"></div>
-            <div class="cell" data-index="8"></div>
-        </div>
-        <div id="win-line"></div> <!-- This is the magic line -->
+      <div id="game">
+        <div class="cell" data-index="0"></div>
+        <div class="cell" data-index="1"></div>
+        <div class="cell" data-index="2"></div>
+        <div class="cell" data-index="3"></div>
+        <div class="cell" data-index="4"></div>
+        <div class="cell" data-index="5"></div>
+        <div class="cell" data-index="6"></div>
+        <div class="cell" data-index="7"></div>
+        <div class="cell" data-index="8"></div>
+      </div>
+      <div id="win-line"></div>
     </div>
 
     <p id="status">Player X's turn</p>
 
     <div class="buttons">
-        <button id="restart">Restart Game</button>
+      <button id="restart">🔄 Restart Game</button>
     </div>
-</section>
+
+    <div id="stats">
+      <div class="stat-row">
+        <span class="stat-label">Total Games:</span>
+        <span class="stat-value" id="total-games">0</span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-label">Draws:</span>
+        <span class="stat-value" id="draws">0</span>
+      </div>
+    </div>
+  </section>
 
   <script src="script.js"></script>
 </body>
